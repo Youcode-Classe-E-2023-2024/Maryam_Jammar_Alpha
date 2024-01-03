@@ -3,8 +3,8 @@
 include_once '_config/config.php';
 include_once '_functions/functions.php';
 include_once '_config/db.php';
-
-
+include_once 'models/Database.php';
+include_once 'models/User.php';
 
 
 spl_autoload_register(function ($class) {
