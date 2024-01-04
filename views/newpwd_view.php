@@ -11,7 +11,21 @@
                                 <p class="mb-0">Please create a new password !</p>
                             </div>
                             <div class="flex-auto p-6">
-                                <form action="index.php?page=newpwd" method="post" role="form">
+                                <?php
+
+                                    $selector = $_GET["selector"];
+                                    $validator = $_GET["validator"];
+
+                                    if (empty($selector) || empty($validator)) {
+                                        echo "Could not validate your request ! ";
+                                    }else {
+                                    if (ctype_xdigit($selector) !== false && ctype_xdigit($validator) !== false) {
+                                ?>
+
+                                <form action="index.php?page=forgotpwd" method="post" role="form">
+                                    <input type="hidden" name="selector" value="<? echo $selector ?>">
+                                    <input type="hidden" name="validator" value="<? echo $validator ?>">
+
                                     <div class="mb-4">
                                         <input name="password" type="password" placeholder="Create a new password" class="focus:shadow-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding p-3 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" required/>
                                     </div>
@@ -19,14 +33,10 @@
                                         <input name="c_password" type="password" placeholder="Confirm your password" class="focus:shadow-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding p-3 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" required/>
                                     </div>
                                     <div class="text-center">
-                                        <button name="forgotpwd" type="submit" class="inline-block w-full px-16 py-3.5 mt-6 mb-0 font-bold leading-normal text-center text-white align-middle transition-all bg-blue-500 border-0 rounded-lg cursor-pointer hover:-translate-y-px active:opacity-85 hover:shadow-xs text-sm ease-in tracking-tight-rem shadow-md bg-150 bg-x-25">Continue</button>
+                                        <button name="reset" type="submit" class="inline-block w-full px-16 py-3.5 mt-6 mb-0 font-bold leading-normal text-center text-white align-middle transition-all bg-blue-500 border-0 rounded-lg cursor-pointer hover:-translate-y-px active:opacity-85 hover:shadow-xs text-sm ease-in tracking-tight-rem shadow-md bg-150 bg-x-25">Reset Password</button>
                                     </div>
                                 </form>
                             </div>
-                            <!--                            <div class="border-black/12.5 rounded-b-2xl border-t-0 border-solid p-6 text-center pt-0 px-1 sm:px-6">-->
-                            <!--                                <p class="mx-auto mb-6 leading-normal text-sm">Don't have an account? <a href="index.php?page=signup" class="font-semibold text-transparent bg-clip-text bg-gradient-to-tl from-blue-500 to-violet-500">Sign up</a></p>-->
-                            <!--                                <p class="mx-auto mb-6 leading-normal text-sm"> <a href="index.php?page=forgotpwd" class="font-semibold text-transparent bg-clip-text bg-gradient-to-tl from-blue-500 to-violet-500">Forgot password?</a></p>-->
-                            <!--                            </div>-->
                         </div>
                     </div>
                     <div class="absolute top-0 right-0 flex-col justify-center hidden w-6/12 h-full max-w-full px-3 pr-0 my-auto text-center flex-0 lg:flex">

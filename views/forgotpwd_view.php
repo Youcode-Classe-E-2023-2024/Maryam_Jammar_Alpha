@@ -8,6 +8,7 @@
                         <div class="relative flex flex-col min-w-0 break-words bg-transparent border-0 shadow-none lg:py4 dark:bg-gray-950 rounded-2xl bg-clip-border">
                             <div class="p-6 pb-0 mb-0 text-center">
                                 <h4 class="font-bold">Forgot Password</h4>
+                                <p>An email will be send to you with instructions on how to reset your password</p>
                                 <p class="mb-0">Enter your email address</p>
                             </div>
                             <div class="flex-auto p-6">
@@ -19,6 +20,14 @@
                                         <button name="forgotpwd" type="submit" class="inline-block w-full px-16 py-3.5 mt-6 mb-0 font-bold leading-normal text-center text-white align-middle transition-all bg-blue-500 border-0 rounded-lg cursor-pointer hover:-translate-y-px active:opacity-85 hover:shadow-xs text-sm ease-in tracking-tight-rem shadow-md bg-150 bg-x-25">Continue</button>
                                     </div>
                                 </form>
+
+                                <?php
+                                    if (isset($_GET["reset"])) {
+                                        if($_GET["reset"] == "success") {
+                                            echo '<p class="signupsuccess">Check your e-mail! </p>';
+                                        }
+                                    }
+                                ?>
                             </div>
 <!--                            <div class="border-black/12.5 rounded-b-2xl border-t-0 border-solid p-6 text-center pt-0 px-1 sm:px-6">-->
 <!--                                <p class="mx-auto mb-6 leading-normal text-sm">Don't have an account? <a href="index.php?page=signup" class="font-semibold text-transparent bg-clip-text bg-gradient-to-tl from-blue-500 to-violet-500">Sign up</a></p>-->
