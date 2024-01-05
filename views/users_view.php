@@ -15,7 +15,7 @@
     <div class="items-center block w-auto max-h-screen overflow-auto h-sidenav grow basis-full">
         <ul class="flex flex-col pl-0 mb-0">
             <li class="mt-0.5 w-full">
-                <a class="py-2.7 dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap rounded-lg px-4 font-semibold text-slate-700 transition-colors" href="">
+                <a class="py-2.7 dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap rounded-lg px-4 font-semibold text-slate-700 transition-colors" href="index.php?page=dashboard">
                     <div class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                         <i class="relative top-0 text-sm leading-normal text-blue-500 ni ni-tv-2"></i>
                     </div>
@@ -33,7 +33,7 @@
             </li>
 
             <li class="mt-0.5 w-full">
-                <a class=" dark:text-white bg-blue-500/13 dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors" href="index.php?page=users">
+                <a class=" dark:text-white bg-blue-500/13 dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors" href="">
                     <div class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                         <i class="relative top-0 text-sm leading-normal text-orange-500 fa fa-users"></i>
                     </div>
@@ -103,7 +103,7 @@
                         </a>
                     </li>
                     <li class="flex items-center px-4">
-                        <a href="javascript:;" class="p-0 text-sm text-white transition-all ease-nav-brand">
+                        <a href="index.php?page=logout" class="p-0 text-sm text-white transition-all ease-nav-brand">
                             <i fixed-plugin-button-nav class="cursor-pointer fa fa-sign-out"></i>
                             <!-- fixed-plugin-button-nav  -->
                         </a>
@@ -196,8 +196,9 @@
                 <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                     <div class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                         <!--                        <h6 class="dark:text-white ">Authors table</h6>-->
+                        <a href="index.php?page=add" class="px-8 py-3 mb-4 ml-auto font-bold leading-normal text-center text-white align-middle transition-all ease-in bg-blue-500 border-0 rounded-lg shadow-md cursor-pointer text-xs tracking-tight-rem hover:shadow-xs hover:-translate-y-px active:opacity-85 left-0">Add User</a>
                     </div>
-                    <div class="flex-auto px-0 pt-0 pb-2">
+                    <div class="flex-auto px-0 pt-0 pb-2 mt-4">
                         <div class="p-0 overflow-x-auto">
                             <table class="items-center w-full mb-0 align-top border-white dark:border-white/40 text-slate-500">
                                 <thead class="align-bottom bg-white">
