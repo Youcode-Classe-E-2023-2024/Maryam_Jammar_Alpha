@@ -192,13 +192,13 @@
 
         <!--forml-->
         <div id="div2" class="m-10 bg-white rounded-2xl shadow-lg">
-            <form method="post" action="index.php?page=add" enctype="multipart/form-data" class="flex flex-col justify-end p-5 shadow-sm rounded-lg mx-auto">
+            <form id="addUserForm" method="post" action="index.php?page=add" enctype="multipart/form-data" class="flex flex-col justify-end p-5 shadow-sm rounded-lg mx-auto">
                 <div class="flex justify-end">
                     <p id="btn_add" class="w-fit m-2 text-white bg-blue-700 rounded p-2 cursor-pointer hover:opacity-80">+</p>
                     <p id="btn_remove" class="w-fit m-2 bg-blue-700 rounded text-white p-2 cursor-pointer hover:opacity-80">-</p>
                 </div>
                 <div class="flex justify-end">
-                    <button name="btn" type="submit" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 hover:opacity-80">Add Users</button>
+                    <button name="btn" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 hover:opacity-80">Add Users</button>
                 </div>
                 <input type="hidden" value="" id="i" name="i">
                 <div class="flex flex-col">
