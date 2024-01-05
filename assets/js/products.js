@@ -22,9 +22,10 @@ $.ajax({
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="p-2 w-1 align-middle bg-transparent border-white dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                    <td class="p-2 w-1 align-middle bg-transparent border-white dark:border-white/40 whitespace-nowrap word-break">
                                         <p class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">${product.body}</p>
                                     </td>
+
                                     <td class="p-2 mt-4 flex justify-between align-middle bg-transparent border-white dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <a href="javascript:;" class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"> Edit </a>
                                         <a href="javascript:;" class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"> Delete </a>
