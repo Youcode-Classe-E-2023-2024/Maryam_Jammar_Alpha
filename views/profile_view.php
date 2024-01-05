@@ -55,7 +55,7 @@
         <ul class="flex flex-col pl-0 mb-0">
 
           <li class="mt-0.5 w-full">
-            <a class="py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors dark:text-white dark:opacity-80" href="../pages/dashboard.html">
+            <a class="py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors dark:text-white dark:opacity-80" href="index.php?page=dashboard">
               <div class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                 <i class="relative top-0 leading-normal text-blue-500 ni ni-tv-2 text-sm"></i>
               </div>
@@ -113,11 +113,11 @@
           </li>
 
           <li class="mt-0.5 w-full">
-            <a class="py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors dark:text-white dark:opacity-80" href="../pages/sign-in.html">
+            <a class="py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors dark:text-white dark:opacity-80" href="index.php?page=logout">
               <div class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                <i class="relative top-0 leading-normal text-orange-500 text-sm ni ni-single-copy-04"></i>
+                <i class="relative top-0 leading-normal text-orange-500 text-sm fa fa-sign-out-alt"></i>
               </div>
-              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Sign In</span>
+              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Logout</span>
             </a>
           </li>
 
@@ -185,7 +185,7 @@
                 </a>
               </li>
               <li class="flex items-center pl-4 xl:hidden">
-                <a href="javascript:;" class="block p-0 text-white transition-all ease-in-out text-sm" sidenav-trigger>
+                <a href="index.php?page=logout" class="block p-0 text-white transition-all ease-in-out text-sm" sidenav-trigger>
                   <div class="w-4.5 overflow-hidden">
                     <i class="ease mb-0.75 relative block h-0.5 rounded-sm bg-white transition-all"></i>
                     <i class="ease mb-0.75 relative block h-0.5 rounded-sm bg-white transition-all"></i>
