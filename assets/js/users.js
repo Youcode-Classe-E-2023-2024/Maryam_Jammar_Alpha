@@ -1,5 +1,5 @@
  const userSection = document.getElementById("user-section");
-
+ let clickedUserID;
     $.ajax({
     type: "POST",
     url: "index.php?page=users",
@@ -21,16 +21,50 @@
                                                 <h6 class="mb-0 text-sm leading-normal dark:text-white">${user.name}</h6>
                                             </div>
                                         </div>
-                                    </td>
+                                    </td>   
                                     <td class="p-2 align-middle bg-transparent border-white dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <p class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">${user.email}</p>
                                     </td>
-                                    <td class="p-2 mt-4 flex justify-between align-middle bg-transparent border-white dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                        <a href="index.php?page=edit" class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"> Edit </a>
-                                        <a href="index.php?page=deleteUser" class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"> Delete </a>
+                                    <td class="mt-4 flex justify-between align-middle bg-transparent border-white dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                        <a  href="index.php?page=edit&id=${user.id}&name=${user.name}&email=${user.email}" class="editUser mt-1.5 text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"> Edit </a>
+                                        <button class=""> 
+                                            <a data-user-id="${user.id}" class="deleteUser text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"> Delete </a>
+                                        </button>
                                     </td>
                                 </tr>`
+
+
 })
+
+        $(document).ready(function () {
+            // Edit product click event
+            $('.editUser').click(function () {
+                clickedUserID = $(this).data('user-id');
+                let username = $(this).data('user-name');
+                let userEmail = $(this).data('user-email');
+                name.value = username;
+                email.value = userEmail;
+            });
+
+            // Delete product click event
+            $('.deleteUser').click(function () {
+                clickedUserID = $(this).data('user-id');
+                deleteUser(clickedUserID);
+            });
+        });
 
 }
 })
+
+
+ function deleteUser(id) {
+        $.ajax({
+            type: "DELETE",
+            url: "https://jsonplaceholder.typicode.com/users/" + id,
+            success: (data, status) => {
+                console.log(status);
+     }
+        })
+ }
+
+
