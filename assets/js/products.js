@@ -11,6 +11,7 @@ $.ajax({
         products = JSON.parse(data);
 
         products.forEach((product) => {
+            let description = product.body.substring(0, 80) + "...";
             productsSection.innerHTML += `<tr>
                                     <td class="p-2 align-middle bg-transparent border-white dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <div class="flex px-2 py-1">
@@ -23,12 +24,14 @@ $.ajax({
                                         </div>
                                     </td>
                                     <td class="p-2 w-1 align-middle bg-transparent border-white dark:border-white/40 whitespace-nowrap word-break">
-                                        <p class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">${product.body}</p>
+                                        <p class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">${description}</p>
                                     </td>
 
-                                    <td class="p-2 mt-4 flex justify-between align-middle bg-transparent border-white dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                        <a href="javascript:;" class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"> Edit </a>
-                                        <a href="javascript:;" class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"> Delete </a>
+                                    <td class="mt-4 flex justify-between align-middle bg-transparent border-white dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                        <a  href="index.php?page=editproduct&id=${product.id}&title=${product.title}&body=${product.body}" class="editProduct mt-1.5 text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"> Edit </a>
+                                        <button > 
+                                            <a data-product-id="${product.id}" class="deleteProduct text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"> Delete </a>
+                                        </button>
                                     </td>
                                 </tr>`
         })
