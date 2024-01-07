@@ -9,6 +9,7 @@ if(isset($_POST['signin'])){
     echo $email;
     try {
         if ($row = $user->login($email, $password)) {
+            $_SESSION["signin"] = true;
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['picture'] = $row['picture'];
             $_SESSION['username'] = $row['username'];
