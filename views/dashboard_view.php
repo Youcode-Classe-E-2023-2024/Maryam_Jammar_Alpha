@@ -116,7 +116,7 @@
                     <li class="relative flex items-center pr-2 mt-2">
                         <p class="hidden transform-dropdown-show"></p>
                         <a href="javascript:;" class="block p-0 text-sm text-white transition-all ease-nav-brand" dropdown-trigger aria-expanded="false">
-                            <i class="cursor-pointer fa fa-bell <?php echo $hasUnreadNotifications ? 'text-red-500' : ''; ?>"></i>
+                            <i class="cursor-pointer fa fa-bell"></i>
                         </a>
 
                         <ul dropdown-menu class="text-sm transform-dropdown before:font-awesome before:leading-default before:duration-350 before:ease lg:shadow-3xl duration-250 min-w-44 before:sm:right-8 before:text-5.5 pointer-events-none absolute right-0 top-0 z-50 origin-top list-none rounded-lg border-0 border-solid border-transparent dark:shadow-dark-xl dark:bg-slate-850 bg-white bg-clip-padding px-2 py-4 text-left text-slate-500 opacity-0 transition-all before:absolute before:right-2 before:left-auto before:top-0 before:z-50 before:inline-block before:font-normal before:text-white before:antialiased before:transition-all before:content-['\f0d8'] sm:-mr-6 lg:absolute lg:right-0 lg:left-auto lg:mt-2 lg:block lg:cursor-pointer">
@@ -146,9 +146,13 @@
     <!-- end Navbar -->
 
     <!-- cards -->
-    <div class="w-full px-6 py-6 mx-auto">
+    <div class="w-full px-6 py-6 mx-auto" id="yourElementId">
+        <div class="flex justify-end">
+            <button class="bg-gray-200 p-3 rounded-lg mb-4" onclick="generatePDF()">Generate statistic to PDF</button>
+        </div>
+
         <!-- row 1 Nombre de products and users-->
-        <div class="flex flex-wrap -mx-3 justify-between">
+        <div class="flex flex-wrap -mx-3 justify-between" >
             <!-- card1 -->
             <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
                 <div class="relative flex flex-col min-w-0 break-words bg-white shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
@@ -191,7 +195,13 @@
                 </div>
             </div>
         </div>
+        <script>
+            function generatePDF() {
+                const element = document.getElementById('yourElementId'); // Remplacez 'yourElementId' par l'ID de l'élément racine de votre contenu HTML
+                html2pdf(element);
+            }
 
+        </script>
         <!-- cards row 2 products list  and pie-->
         <div class="flex flex-wrap mt-6 -mx-3">
             <!--products list-->
@@ -372,3 +382,4 @@
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.26.0/dist/apexcharts.min.js"></script>
 <script src="assets/js/dashboard.js" ></script>
+<script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
