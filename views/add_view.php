@@ -192,7 +192,7 @@
 
         <!--forml-->
         <div id="div2" class="m-10 bg-white rounded-2xl shadow-lg">
-            <form id="addUserForm" method="post" action="index.php?page=add" enctype="multipart/form-data" class="flex flex-col justify-end p-5 shadow-sm rounded-lg mx-auto">
+            <form id="mainForm" method="post" action="index.php?page=add" enctype="multipart/form-data" class="flex flex-col justify-end p-5 shadow-sm rounded-lg mx-auto">
                 <div class="flex justify-end">
                     <p id="btn_add" class="w-fit m-2 text-white bg-blue-700 rounded p-2 cursor-pointer hover:opacity-80">+</p>
                     <p id="btn_remove" class="w-fit m-2 bg-blue-700 rounded text-white p-2 cursor-pointer hover:opacity-80">-</p>
@@ -200,29 +200,30 @@
                 <div class="flex justify-end">
                     <button name="btn" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 hover:opacity-80">Add Users</button>
                 </div>
-                <input type="hidden" value="" id="i" name="i">
-                <div class="flex flex-col">
-                    <div class="flex justify-between">
-                        <!-- Username -->
-                        <div class="relative z-0 mb-5 group w-fit">
-                            <input type="text" name="username-0" id="username" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                            <label for="username" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Username</label>
+                <input type="hidden" value="1" id="i" name="i">
+                <div class="flex flex-col" id="forms">
+                    <!-- Initial form content -->
+                    <div class="sub-form flex flex-col mb-6 p-4 rounded">
+                        <div class="flex w-full justify-between">
+                            <div class="relative z-0 mb-5 group w-fit">
+                                <input type="text" name="username-1" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Username</label>
+                            </div>
+                            <div class="relative z-0 w-fit mb-5 group">
+                                <input type="email" name="email-1" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
+                            </div>
                         </div>
-                        <!-- Email -->
-                        <div class="relative z-0 w-fit mb-5 group">
-                            <input type="email" name="email" id="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                            <label for="email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
-                        </div>
-
                     </div>
-
-                </div>
-
-                <div id="forms" class="col-span-2 my-2">
-                    <!-- Add inputs dynamically here after pressing + -->
+                    <!-- End of initial form content -->
                 </div>
             </form>
-        </div>        <footer class="pt-8">
+
+
+        </div>
+
+
+        <footer class="pt-8">
             <div class="w-full px-6 mx-auto">
                 <div class="flex flex-wrap items-center -mx-3 lg:justify-between">
                     <div class="w-full max-w-full px-3 mt-0 mb-6 shrink-0 lg:mb-0 lg:w-1/2 lg:flex-none">
@@ -246,4 +247,6 @@
 <script src="assets/js/argon-dashboard-tailwind.js?v=1.0.1" async></script>
 <script src="assets/js/users.js"></script>
 <script src="assets/js/addmultiple.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 
