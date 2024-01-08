@@ -1,4 +1,5 @@
 # XENO
+![Logo XENO](C:\Users\youco\OneDrive\Images\Captures d’écran\xeno.png)
 
 ## Contexte du Projet
 L'entreprise XENO s'engage à créer un site fonctionnel, mettant l'accent sur les fonctionnalités avant la personnalisation de la marque. Les principales priorités du projet sont les suivantes :
