@@ -21,13 +21,7 @@
                                     </div>
                                 </form>
 
-                                <?php
-                                    if (isset($_GET["reset"])) {
-                                        if($_GET["reset"] == "success") {
-                                            echo '<p class="signupsuccess">Check your e-mail! </p>';
-                                        }
-                                    }
-                                ?>
+
                             </div>
 <!--                            <div class="border-black/12.5 rounded-b-2xl border-t-0 border-solid p-6 text-center pt-0 px-1 sm:px-6">-->
 <!--                                <p class="mx-auto mb-6 leading-normal text-sm">Don't have an account? <a href="index.php?page=signup" class="font-semibold text-transparent bg-clip-text bg-gradient-to-tl from-blue-500 to-violet-500">Sign up</a></p>-->

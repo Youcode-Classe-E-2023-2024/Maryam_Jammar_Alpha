@@ -1,58 +1,67 @@
 <?php
-if (isset($_POST["forgotpwd"])){
 
-    $selector = bin2hex(random_bytes(8));
-    $token = random_bytes(32);
 
-    $url = "http://localhost/Maryam_Jammar_Alpha/index.php?page=newpwd&selector=" . $selector . "&validator=" . bin2hex($token);
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-    $expires = date("U") + 3600;
+require 'vendor/autoload.php';
 
-    $userEmail = $_POST["email"];
 
-    $sql = "DELETE FROM pwdReset WHERE pwdResetEmail=?";
-    $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        echo "There was an error!";
+if (isset($_POST["forgotpwd"])) {
+    $email = $_POST["email"];
+
+    $result = $db->query("SELECT * FROM users WHERE email = ?");
+    $db->bind(1, $email);
+    $user = $db->single();
+
+    if ($user) {
+        $selector = bin2hex(random_bytes(8));
+        $token = random_bytes(32);
+
+        $expires = date("U") + 3600;
+
+        $db->query("INSERT INTO passwordrecovery (pwd_reset_email, pwd_reset_selector, pwd_reset_token, pwd_reset_expires, user_id) VALUES (?, ?, ?, ?, ?)");
+        $db->bind(1, $email);
+        $db->bind(2, $selector);
+        $db->bind(3, $token);
+        $db->bind(4, $expires);
+        $db->bind(5, $user['user_id']);
+        $db->execute();
+
+        $resetLink = "http://localhost/Maryam_Jammar_Alpha/index.php?page=newpwd&selector=" . $selector . "&validator=" . bin2hex($token);
+
+        $to = $email;
+        $subject = "Password Reset";
+        $message = "Click the following link to reset your password: $resetLink";
+        $headers = "From: maryamjr03@gmail.com"; // Remplacez par votre adresse e-mail
+
+
+        $mail = new PHPMailer(true);
+
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'maryamjr03@gmail.com';
+        $mail->Password = 'qcda lxlm cvxv wqja';
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = 465;
+
+        $mail->setFrom('maryamjr03@gmail.com', 'maryam');
+        $mail->addAddress($to);
+
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body = "$message";
+
+        $mail->send();
+//        header("Location: index.php?page=login");
+        echo 'Message has been sent';
         exit();
-    }else {
-        mysqli_stmt_bind_param($stmt, "s", $userEmail);
-        mysqli_stmt_execute($stmt);
+    } else {
+        echo "Email not found";
     }
 
-    $sql = "INSERT INTO pwdReset (pwdResetEmail, pwdResetSelector, pwdResetToken, pwdResetExpires) VALUES (?, ?, ?, ?);";
-
-    $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        echo "There was an error!";
-        exit();
-    }else {
-        $hashedToken = password_hash($token, PASSWORD_DEFAULT);
-        mysqli_stmt_bind_param($stmt, "ssss", $userEmail, $selector, $hashedToken, $expires);
-        mysqli_stmt_execute($stmt);
-    }
-
-    mysqli_stmt_close($stmt);
-    mysqli_close();
-
-    $to = $userEmail;
-
-    $subject = 'Reset your password for mmtuts';
-
-    $message = '<p>We recieved a passowrd reset request. The link to reset your password
-    make this request, you can ignore this email</p>';
-    $message .= '<a href="' .$url . '">' . $url . '</a></p>';
 
 
-    $headers = "From mmtuts <usemmtuts@gmail.com>\r\n";
-    $headers = "Reply-To:  usemmtuts@gmail.com\r\n";
-    $headers = "Content_Type: text/html\r\n";
-
-    mail($to, $subject, $message, $headers);
-
-    header("Location: ../reset-password.php?resett=success");
-
-
-}else{
-    header("Location: index.php?page=forgotpwd?reset=success");
 }
+
