@@ -111,7 +111,7 @@
 
                     <!-- notifications -->
 
-                    <li class="relative flex items-center pr-2">
+                    <li id="yourDropdownId" class="relative flex items-center pr-2">
                         <p class="hidden transform-dropdown-show"></p>
                         <a href="javascript:;" class="block p-0 text-sm text-white transition-all ease-nav-brand" dropdown-trigger aria-expanded="false">
                             <i class="cursor-pointer fa fa-bell"></i>
@@ -239,6 +239,10 @@
         </footer>
     </div>
 </main>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
 <!-- plugin for scrollbar  -->
 <script src="assets/js/plugins/perfect-scrollbar.min.js" async></script>
 <!-- main script file  -->
