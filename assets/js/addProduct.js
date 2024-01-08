@@ -1,57 +1,49 @@
-let formsDiv = document.querySelector('#formsP');
-let addBtn = document.querySelector('#btn_addP');
-let removeBtn = document.querySelector('#btn_removeP');
-let s = document.querySelector('#s');
-s.value = 1;
-
-addBtn.addEventListener('click', ()=>{
-    formsDiv.innerHTML += `
-            <div class="flex flex-col">
-                <div class="flex w-full justify-between">
-                    <div class="relative z-0 mb-5 group w-fit">
-                        <input type="text" name="title-${s.value}" id="title" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                        <label for="title" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Product name</label>
-                    </div>
-                    <div class="relative z-0 w-fit mb-5 group">
-                        <input type="text" name="body-${s.value}" id="body" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                        <label for="body" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Description</label>
-                    </div>
-                    
-                </div>
-            </div> `;
-    i.value++;
-});
-
-removeBtn.addEventListener('click', () => {
-    formsDiv.removeChild(formsDiv.children[s.value - 2]);
-    s.value--;
-});
-
-
-
-
 $(document).ready(function () {
-    $('#addProductForm').submit(function (e) {
+    let mainForm = $('#mainForm');
+    let formsDiv = $('#forms');
+    let addBtn = $('#btn_add');
+    let removeBtn = $('#btn_remove');
+    let s = $('#s');
+
+    addBtn.click(function () {
+        let newIndex = parseInt(s.val()) + 1;
+        let newForm = formsDiv.children().first().clone();
+        newForm.find('input[name^="title"]').attr('name', `title-${newIndex}`).val('');
+        newForm.find('input[name^="body"]').attr('name', `body-${newIndex}`).val('');
+        formsDiv.append(newForm);
+        s.val(newIndex);
+    });
+
+    removeBtn.click(function () {
+        if (parseInt(s.val()) > 1) {
+            formsDiv.children().last().remove();
+            s.val(parseInt(s.val()) - 1);
+        }
+    });
+
+    mainForm.submit(function (e) {
         e.preventDefault();
 
         // Collect form data
-        let formData = {
-            title: $('#title').val(),
-            body: $('#body').val()
-        };
+        let formData = [];
+        formsDiv.find('.sub-form').each(function (index) {
+            formData.push({
+                username: $(this).find(`input[name="title-${index + 1}"]`).val(),
+                email: $(this).find(`input[name="body-${index + 1}"]`).val()
+            });
+        });
 
-        // Send POST request to the server
         $.ajax({
             type: "POST",
             url: "https://jsonplaceholder.typicode.com/posts",
-            data: { productData: formData },
+            data: { userData: formData },
             success: function (data, status) {
                 if (status === "success") {
-                    alert("Product has been added successfully!");
+                    alert("Products have been added successfully!");
                 } else {
-                    alert("Failed to add product. Please try again.");
+                    alert("Failed to add products. Please try again.");
                 }
-                console.log(data)
+                console.log(data);
             }
         });
     });
