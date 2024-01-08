@@ -151,6 +151,13 @@
             <button class="bg-gray-200 p-3 rounded-lg mb-4" onclick="generatePDF()">Generate statistic to PDF</button>
         </div>
 
+        <script>
+            function generatePDF() {
+                const element = document.getElementById('yourElementId'); // Remplacez 'yourElementId' par l'ID de l'élément racine de votre contenu HTML
+                html2pdf(element);
+            }
+        </script>
+
         <!-- row 1 Nombre de products and users-->
         <div class="flex flex-wrap -mx-3 justify-between" >
             <!-- card1 -->
@@ -195,13 +202,7 @@
                 </div>
             </div>
         </div>
-        <script>
-            function generatePDF() {
-                const element = document.getElementById('yourElementId'); // Remplacez 'yourElementId' par l'ID de l'élément racine de votre contenu HTML
-                html2pdf(element);
-            }
 
-        </script>
         <!-- cards row 2 products list  and pie-->
         <div class="flex flex-wrap mt-6 -mx-3">
             <!--products list-->
